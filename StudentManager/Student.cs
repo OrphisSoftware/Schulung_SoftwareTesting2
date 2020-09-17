@@ -11,7 +11,7 @@ namespace StudentManager
 
         public Student(string name, DateTime birthday, SubjectArea subjectArea)
         {
-            if (Birthday.Year < 1900 && Birthday.Year > 2000)
+            if (birthday.Year < 1900 || birthday.Year > 2000)
             {
                 throw new ArgumentOutOfRangeException(BirthdayShouldBeBetweenExceptionMessage);
             }
