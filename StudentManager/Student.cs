@@ -4,21 +4,25 @@ namespace StudentManager
 {
     public class Student
     {
-        public const string BirthdayShouldBeBetweenExceptionMessage = "Birthday should be between 1900 and 2000";
-        public string Name { get; }
-        public DateTime Birthday { get; }
-        public SubjectArea SubjectArea { get; }
+         public string Name { get; set; }
+        public int BirthYear { get; set; }
+        public SubjectArea Area { get; set; }
 
-        public Student(string name, DateTime birthday, SubjectArea subjectArea)
+        public Student(string name, int birthYear, SubjectArea area)
         {
-            if (birthday.Year < 1900 || birthday.Year > 2000)
+            if(string.IsNullOrEmpty(name))
             {
-                throw new ArgumentOutOfRangeException(BirthdayShouldBeBetweenExceptionMessage);
+                throw new ArgumentException();
+            }
+
+            if(birthYear<1900 || birthYear > 2000)
+            {
+                throw new ArgumentException();
             }
 
             Name = name;
-            Birthday = birthday;
-            SubjectArea = subjectArea;
+            BirthYear = birthYear;
+            Area = area;
         }
     }
 }
